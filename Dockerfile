@@ -16,7 +16,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy the Django project into the container
-COPY techcruncherapp/ /app
+COPY techcruncher/ /app
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
