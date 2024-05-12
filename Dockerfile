@@ -8,12 +8,12 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install Gunicorn using apt
-RUN apt-get update && apt-get install -y gunicorn
-
 # Install dependencies
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+
+# Install Gunicorn using pip
+RUN pip install gunicorn
 
 # Copy the Django project into the container
 COPY techcruncher/ /app
