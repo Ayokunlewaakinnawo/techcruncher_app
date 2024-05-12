@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  django:
+    build: .
+    command: gunicorn techcruncherapp.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/app/static
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+
+  redis:
+    image: redis:latest
+
+  celery:
+    build: .
+    command: celery -A techcruncherapp worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+
+  celery-beat:
+    build: .
+    command: celery -A techcruncherapp beat --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+
+volumes:
+  static_volume:
