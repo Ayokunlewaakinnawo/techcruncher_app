@@ -9,6 +9,8 @@ services:
       - static_volume:/app/technews/static
     expose:
       - "8000"
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 on the container
     depends_on:
       - redis
     environment:
