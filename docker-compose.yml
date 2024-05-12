@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+
+  services:
+  nginx:
+    image: my-custom-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro  # Mount nginx.conf into Nginx container
+    depends_on:
+      - django  # Ensure Django service is started before Nginx
+      
   django:
     build: .
     command: /usr/local/bin/gunicorn techcruncherapp.wsgi:application --bind 0.0.0.0:8000
