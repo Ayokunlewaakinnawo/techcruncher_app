@@ -8,8 +8,6 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-FROM nginx:latest
-
 # Install dependencies
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
@@ -26,11 +24,6 @@ RUN python manage.py collectstatic --noinput
 # Create directory for static files
 RUN mkdir -p /techcruncher/technews/static/
 
-# Install Nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Copy custom Nginx configuration file to the container
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
 # Expose port
 EXPOSE 8000
 
