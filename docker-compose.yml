@@ -3,7 +3,7 @@ version: '3'
 services:
   django:
     build: .
-    command: /usr/bin/gunicorn techcruncherapp.wsgi:application --bind 0.0.0.0:8000
+    command: /usr/local/bin/gunicorn techcruncherapp.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/app/technews/static
     expose:
