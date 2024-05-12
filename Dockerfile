@@ -25,4 +25,4 @@ RUN python manage.py collectstatic --noinput
 RUN mkdir -p /techcruncher/technews/static/
 
 # Command to run Gunicorn
-CMD ["gunicorn", "techcruncherapp.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["/usr/bin/gunicorn", "techcruncherapp.wsgi:application", "--bind", "0.0.0.0:8000"]
