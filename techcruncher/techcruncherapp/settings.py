@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "technews/static",
 ]
-STATIC_ROOT ='/techcruncherapp/technews/static/'
+STATIC_ROOT ='/techcruncher/technews/static/'
 
 # images (uploaded images on the app goes in here)
 MEDIA_URL = '/technews/media/'

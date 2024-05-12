@@ -22,7 +22,7 @@ COPY techcruncher/ /app
 RUN python manage.py collectstatic --noinput
 
 # Create directory for static files
-RUN mkdir -p /techcruncherapp/technews/static/
+RUN mkdir -p /techcruncher/technews/static/
 
 # Command to run Gunicorn
 CMD ["gunicorn", "techcruncherapp.wsgi:application", "--bind", "0.0.0.0:8000"]
