@@ -26,3 +26,8 @@ RUN mkdir -p /techcruncher/technews/static/
 
 # Command to run Gunicorn
 CMD ["/usr/local/bin/gunicorn", "techcruncherapp.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+FROM nginx:latest
+
+# Copy custom Nginx configuration file to the container
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
