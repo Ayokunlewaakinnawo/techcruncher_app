@@ -21,7 +21,7 @@ services:
     build: .
     command: celery -A techcruncherapp worker --loglevel=info
     volumes:
-      - .:/app/techcruncherapp
+      - techcruncherapp:/app/techcruncherapp
     depends_on:
       - redis
     environment:
@@ -31,7 +31,7 @@ services:
     build: .
     command: celery -A techcruncherapp beat --loglevel=info
     volumes:
-      - .:/app/techcruncherapp
+      - techcruncherapp:/app/techcruncherapp
     depends_on:
       - redis
     environment:
