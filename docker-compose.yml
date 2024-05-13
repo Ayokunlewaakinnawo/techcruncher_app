@@ -28,6 +28,7 @@ services:
       #- ./techcruncher/techcruncherapp:/app/techcruncherapp
     depends_on:
       - redis
+      - django
     environment:
       - REDIS_HOST=redis
       - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
