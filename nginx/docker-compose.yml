@@ -1,9 +1,0 @@
-version: '3'
-
-services:
-  nginx:
-    image: my-custom-nginx
-    ports:
-      - "80:80"
-    volumes:
-      - /nginx/nginx.conf:/etc/nginx/conf.d

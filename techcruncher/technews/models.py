@@ -15,6 +15,7 @@ class NewsPost(models.Model):
 
     class Meta:
         ordering = ['-date_added']#<---- Ordering from newest to oldest
+        db_table = 'Newspost'  # Specify the table name
 
     def save(self, *args, **kwargs):
         # Check for existing duplicates based on title and url
