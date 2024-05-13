@@ -148,7 +148,6 @@ app.autodiscover_tasks(lambda: INSTALLED_APPS)
 # Use a different Redis database (optional)
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/1'
-CELERY_RESULT_BACKEND = 'django-db'
 
 # Configure Celery Beat
 CELERY_BEAT_SCHEDULE = {
