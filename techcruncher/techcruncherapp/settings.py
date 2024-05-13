@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'technews',
-    'celery',
-    'djcelery',
+    'kombu.transport.django',
     'django_celery_beat',
+    'celery',
 ]
 
 MIDDLEWARE = [
