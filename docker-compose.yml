@@ -15,6 +15,7 @@ services:
       - redis
     environment:
       - REDIS_HOST=redis
+      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
   redis:
     image: redis:latest
@@ -29,6 +30,7 @@ services:
       - redis
     environment:
       - REDIS_HOST=redis
+      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
   celery-beat:
     build: .
@@ -40,6 +42,7 @@ services:
       - redis
     environment:
       - REDIS_HOST=redis
+      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
 volumes:
   static_volume:
