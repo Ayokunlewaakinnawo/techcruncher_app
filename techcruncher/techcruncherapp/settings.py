@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'technews',
     'celery',
-    'djcelery'
+    'djcelery',
     'django_celery_beat',
 ]
 
