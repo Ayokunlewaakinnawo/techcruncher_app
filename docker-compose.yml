@@ -25,7 +25,7 @@ services:
     build: .
     command: celery -A techcruncherapp worker --loglevel=info
     volumes:
-      - ./techcruncher:/app  # Mount the entire techcruncher folder
+      #- ./techcruncher:/app  # Mount the entire techcruncher folder
       #- ./techcruncher/techcruncherapp:/app/techcruncherapp
     depends_on:
       - redis
@@ -38,7 +38,7 @@ services:
     build: .
     command: celery -A techcruncherapp beat --loglevel=info
     volumes:
-      - ./techcruncher:/app  # Mount the entire techcruncher folder
+      #- ./techcruncher:/app  # Mount the entire techcruncher folder
       #- ./techcruncher/techcruncherapp:/app/techcruncherapp
     depends_on:
       - redis
