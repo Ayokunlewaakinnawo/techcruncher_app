@@ -14,7 +14,6 @@ services:
     depends_on:
       - redis
     environment:
-      - ENGINE=django.db.backends.sqlite3
       - REDIS_HOST=redis
       - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
@@ -24,29 +23,26 @@ services:
   celery:
     build: .
     command: celery -A techcruncherapp worker --loglevel=info
-    #volumes:
-      #- ./techcruncher:/app  # Mount the entire techcruncher folder
-      #- ./techcruncher/techcruncherapp:/app/techcruncherapp
+    volumes:
+      - ./techcruncher:/app  # Mount the entire techcruncher folder
     depends_on:
       - redis
       - django
     environment:
       - REDIS_HOST=redis
-      - ENGINE=django.db.backends.sqlite3
-      #- DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
   celery-beat:
     build: .
     command: celery -A techcruncherapp beat --loglevel=info
-    #volumes:
-      #- ./techcruncher:/app  # Mount the entire techcruncher folder
-      #- ./techcruncher/techcruncherapp:/app/techcruncherapp
+    volumes:
+      - ./techcruncher:/app  # Mount the entire techcruncher folder
     depends_on:
       - redis
       - django
     environment:
       - REDIS_HOST=redis
-      #- DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
 volumes:
   static_volume:
