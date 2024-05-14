@@ -32,6 +32,7 @@ services:
       - django
     environment:
       - REDIS_HOST=redis
+      - ENGINE=django.db.backends.sqlite3
       #- DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
   celery-beat:
