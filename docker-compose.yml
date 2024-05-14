@@ -25,6 +25,7 @@ services:
     command: celery -A techcruncherapp worker --loglevel=info
     volumes:
       - ./techcruncher:/app  # Mount the entire techcruncher folder
+      - ./techcruncher:/app/db
     depends_on:
       - redis
       - django
