@@ -14,6 +14,7 @@ services:
     depends_on:
       - redis
     environment:
+      - ENGINE=django.db.backends.sqlite3
       - REDIS_HOST=redis
       - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
