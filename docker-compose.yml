@@ -32,7 +32,7 @@ services:
       - django
     environment:
       - REDIS_HOST=redis
-      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      #- DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
   celery-beat:
     build: .
@@ -45,7 +45,7 @@ services:
       - django
     environment:
       - REDIS_HOST=redis
-      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      #- DJANGO_SETTINGS_MODULE=techcruncherapp.settings
 
 volumes:
   static_volume:
