@@ -4,11 +4,11 @@ from django.utils.text import slugify
 
 class NewsPost(models.Model):
     title = models.TextField(max_length=255)
-    desc = models.TextField()
+    desc = models.TextField(max_length=10000)
     url = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True, max_length=255)#models.SlugField(unique=True, blank=True)
     author = models.TextField(max_length=255)
-    body = models.TextField()
+    body = models.TextField(max_length=10000)
     image1 = models.ImageField(upload_to='images/', blank=True)
     image2 = models.ImageField(upload_to='images/', blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
