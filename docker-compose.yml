@@ -13,9 +13,17 @@ services:
       - "8000:8000"  # Map port 8000 on the host to port 8000 on the container
     depends_on:
       - redis
+      - postgres
     environment:
       - REDIS_HOST=redis
       - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   redis:
     image: redis:latest
@@ -23,27 +31,27 @@ services:
   celery:
     build: .
     command: celery -A techcruncherapp worker --loglevel=info
-    volumes:
+    #volumes:
       #- ./techcruncher:/app  # Mount the entire techcruncher folder
-      - ./techcruncher:/app/db
+      #- ./techcruncher:/app/db
     depends_on:
       - redis
       - django
-    environment:
-      - REDIS_HOST=redis
-      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      - postgres
+    env_file:
+      - .env
 
   celery-beat:
     build: .
     command: celery -A techcruncherapp beat --loglevel=info
-    volumes:
-      - ./techcruncher:/app/db  # Mount the entire techcruncher folder
+    #volumes:
+      #- ./techcruncher:/app/db  # Mount the entire techcruncher folder
     depends_on:
       - redis
-      - django
-    environment:
-      - REDIS_HOST=redis
-      - DJANGO_SETTINGS_MODULE=techcruncherapp.settings
+      - postgres
+    env_file:
+      - .env
 
 volumes:
   static_volume:
+  postgres_data:

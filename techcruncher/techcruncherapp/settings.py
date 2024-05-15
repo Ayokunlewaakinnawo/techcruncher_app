@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-)3tgz%u1(huv9b8!p6lvn6$uz6@4da+@#wwj13z4co_mmp+*h%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.140.241.17', 'techcruncher.org', 'www.techcruncher.org']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,12 +82,25 @@ WSGI_APPLICATION = 'techcruncherapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'techcruncher_postgresql',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'postgres',
+        'PORT': '5432',  # Assuming the default PostgreSQL port
     }
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 
 # Password validation
