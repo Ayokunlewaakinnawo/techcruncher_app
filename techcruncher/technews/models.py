@@ -6,7 +6,7 @@ class NewsPost(models.Model):
     title = models.TextField(max_length=255)
     desc = models.TextField()
     url = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, max_length=255)#models.SlugField(unique=True, blank=True)
     author = models.TextField(max_length=255)
     body = models.TextField()
     image1 = models.ImageField(upload_to='images/', blank=True)
