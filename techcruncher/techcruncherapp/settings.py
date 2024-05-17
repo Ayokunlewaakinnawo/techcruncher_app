@@ -58,6 +58,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://techcruncher.org',
+]
+
 ROOT_URLCONF = 'techcruncherapp.urls'
 
 TEMPLATES = [
