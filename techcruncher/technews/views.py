@@ -1,3 +1,4 @@
+from turtle import title
 from django.shortcuts import render, redirect
 from django.http import Http404, JsonResponse
 from technews.models import NewsPost
@@ -38,15 +39,20 @@ def home(request):
 
 def news(request, slug):
     full_url = request.build_absolute_uri()
+
     #print(full_url)
     try:
         post = NewsPost.objects.get(slug=slug)
+        post_title = post.title 
+
     except NewsPost.DoesNotExist:
         raise Http404("BlogPost does not exist")
 
     post = NewsPost.objects.get(slug=slug)
     context={'post':post,
-             'full_url':full_url}
+             'full_url':full_url,
+             'post_title':post_title
+             }
     return render(request, 'technews/newscontent.html', context)
 
 
